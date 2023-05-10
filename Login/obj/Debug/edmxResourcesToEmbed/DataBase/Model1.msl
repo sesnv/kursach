@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище basaModelContainer" CdmEntityContainer="basaEntities">
+    <EntitySetMapping Name="grup">
+      <EntityTypeMapping TypeName="basaModel.grup">
+        <MappingFragment StoreEntitySet="grup">
+          <ScalarProperty Name="Facultet" ColumnName="Facultet" />
+          <ScalarProperty Name="kurs" ColumnName="kurs" />
+          <ScalarProperty Name="Num_gr" ColumnName="Num_gr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="postupaushii">
+      <EntityTypeMapping TypeName="basaModel.postupaushii">
+        <MappingFragment StoreEntitySet="postupaushii">
+          <ScalarProperty Name="Facultet" ColumnName="Facultet" />
+          <ScalarProperty Name="familiya_postup" ColumnName="familiya_postup" />
+          <ScalarProperty Name="imya_postup" ColumnName="imya_postup" />
+          <ScalarProperty Name="ball" ColumnName="ball" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stipendiya">
+      <EntityTypeMapping TypeName="basaModel.stipendiya">
+        <MappingFragment StoreEntitySet="stipendiya">
+          <ScalarProperty Name="Num_gr" ColumnName="Num_gr" />
+          <ScalarProperty Name="familiya" ColumnName="familiya" />
+          <ScalarProperty Name="imya" ColumnName="imya" />
+          <ScalarProperty Name="viplata" ColumnName="viplata" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="student">
+      <EntityTypeMapping TypeName="basaModel.student">
+        <MappingFragment StoreEntitySet="student">
+          <ScalarProperty Name="familiya" ColumnName="familiya" />
+          <ScalarProperty Name="imya" ColumnName="imya" />
+          <ScalarProperty Name="Num_gr" ColumnName="Num_gr" />
+          <ScalarProperty Name="god_postup" ColumnName="god_postup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="univer">
+      <EntityTypeMapping TypeName="basaModel.univer">
+        <MappingFragment StoreEntitySet="univer">
+          <ScalarProperty Name="Facultet" ColumnName="Facultet" />
+          <ScalarProperty Name="Num_gr" ColumnName="Num_gr" />
+          <ScalarProperty Name="Num_gr2" ColumnName="Num_gr2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

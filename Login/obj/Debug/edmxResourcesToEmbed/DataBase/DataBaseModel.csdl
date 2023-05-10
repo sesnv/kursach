@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="new_bdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="grup">
+    <Key>
+      <PropertyRef Name="Num_gr" />
+    </Key>
+    <Property Name="Facultet" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="kurs" Type="Int32" />
+    <Property Name="Num_gr" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="univer" Relationship="Self.FK__grup__Facultet__403A8C7D" FromRole="grup" ToRole="univer" />
+    <NavigationProperty Name="stipendiya" Relationship="Self.FK__stipendiy__Num_g__4222D4EF" FromRole="grup" ToRole="stipendiya" />
+    <NavigationProperty Name="student" Relationship="Self.FK__student__Num_gr__4316F928" FromRole="grup" ToRole="student" />
+    <NavigationProperty Name="vipusk" Relationship="Self.FK__vipusk__Num_gr__440B1D61" FromRole="grup" ToRole="vipusk" />
+  </EntityType>
+  <EntityType Name="postupaushii">
+    <Key>
+      <PropertyRef Name="ball" />
+    </Key>
+    <Property Name="Facultet" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="familiya_postup" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="imya_postup" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ball" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="univer" Relationship="Self.FK__postupaus__Facul__412EB0B6" FromRole="postupaushii" ToRole="univer" />
+  </EntityType>
+  <EntityType Name="stipendiya">
+    <Key>
+      <PropertyRef Name="imya" />
+    </Key>
+    <Property Name="Num_gr" Type="Int32" />
+    <Property Name="familiya" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="imya" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="viplata" Type="Int32" />
+    <NavigationProperty Name="grup" Relationship="Self.FK__stipendiy__Num_g__4222D4EF" FromRole="stipendiya" ToRole="grup" />
+  </EntityType>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="familiya" />
+    </Key>
+    <Property Name="familiya" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="imya" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Num_gr" Type="Int32" />
+    <Property Name="god_postup" Type="DateTime" Precision="0" />
+    <Property Name="paroli" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="grup" Relationship="Self.FK__student__Num_gr__4316F928" FromRole="student" ToRole="grup" />
+  </EntityType>
+  <EntityType Name="univer">
+    <Key>
+      <PropertyRef Name="Facultet" />
+    </Key>
+    <Property Name="Facultet" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Num_gr" Type="Int32" Nullable="false" />
+    <Property Name="Num_gr2" Type="Int32" />
+    <NavigationProperty Name="grup" Relationship="Self.FK__grup__Facultet__403A8C7D" FromRole="univer" ToRole="grup" />
+    <NavigationProperty Name="postupaushii" Relationship="Self.FK__postupaus__Facul__412EB0B6" FromRole="univer" ToRole="postupaushii" />
+  </EntityType>
+  <EntityType Name="vipusk">
+    <Key>
+      <PropertyRef Name="familiya_vipusk" />
+    </Key>
+    <Property Name="familiya_vipusk" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="imya_vipusk" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Num_gr" Type="Int32" />
+    <NavigationProperty Name="grup" Relationship="Self.FK__vipusk__Num_gr__440B1D61" FromRole="vipusk" ToRole="grup" />
+  </EntityType>
+  <Association Name="FK__grup__Facultet__403A8C7D">
+    <End Role="univer" Type="Self.univer" Multiplicity="0..1" />
+    <End Role="grup" Type="Self.grup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="univer">
+        <PropertyRef Name="Facultet" />
+      </Principal>
+      <Dependent Role="grup">
+        <PropertyRef Name="Facultet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__stipendiy__Num_g__4222D4EF">
+    <End Role="grup" Type="Self.grup" Multiplicity="0..1" />
+    <End Role="stipendiya" Type="Self.stipendiya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="grup">
+        <PropertyRef Name="Num_gr" />
+      </Principal>
+      <Dependent Role="stipendiya">
+        <PropertyRef Name="Num_gr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__student__Num_gr__4316F928">
+    <End Role="grup" Type="Self.grup" Multiplicity="0..1" />
+    <End Role="student" Type="Self.student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="grup">
+        <PropertyRef Name="Num_gr" />
+      </Principal>
+      <Dependent Role="student">
+        <PropertyRef Name="Num_gr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vipusk__Num_gr__440B1D61">
+    <End Role="grup" Type="Self.grup" Multiplicity="0..1" />
+    <End Role="vipusk" Type="Self.vipusk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="grup">
+        <PropertyRef Name="Num_gr" />
+      </Principal>
+      <Dependent Role="vipusk">
+        <PropertyRef Name="Num_gr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__postupaus__Facul__412EB0B6">
+    <End Role="univer" Type="Self.univer" Multiplicity="0..1" />
+    <End Role="postupaushii" Type="Self.postupaushii" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="univer">
+        <PropertyRef Name="Facultet" />
+      </Principal>
+      <Dependent Role="postupaushii">
+        <PropertyRef Name="Facultet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="new_bdEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="grup" EntityType="Self.grup" />
+    <EntitySet Name="postupaushii" EntityType="Self.postupaushii" />
+    <EntitySet Name="stipendiya" EntityType="Self.stipendiya" />
+    <EntitySet Name="student" EntityType="Self.student" />
+    <EntitySet Name="univer" EntityType="Self.univer" />
+    <EntitySet Name="vipusk" EntityType="Self.vipusk" />
+    <AssociationSet Name="FK__grup__Facultet__403A8C7D" Association="Self.FK__grup__Facultet__403A8C7D">
+      <End Role="univer" EntitySet="univer" />
+      <End Role="grup" EntitySet="grup" />
+    </AssociationSet>
+    <AssociationSet Name="FK__stipendiy__Num_g__4222D4EF" Association="Self.FK__stipendiy__Num_g__4222D4EF">
+      <End Role="grup" EntitySet="grup" />
+      <End Role="stipendiya" EntitySet="stipendiya" />
+    </AssociationSet>
+    <AssociationSet Name="FK__student__Num_gr__4316F928" Association="Self.FK__student__Num_gr__4316F928">
+      <End Role="grup" EntitySet="grup" />
+      <End Role="student" EntitySet="student" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vipusk__Num_gr__440B1D61" Association="Self.FK__vipusk__Num_gr__440B1D61">
+      <End Role="grup" EntitySet="grup" />
+      <End Role="vipusk" EntitySet="vipusk" />
+    </AssociationSet>
+    <AssociationSet Name="FK__postupaus__Facul__412EB0B6" Association="Self.FK__postupaus__Facul__412EB0B6">
+      <End Role="univer" EntitySet="univer" />
+      <End Role="postupaushii" EntitySet="postupaushii" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

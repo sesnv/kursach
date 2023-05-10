@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище new_bdModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="grup">
+    <Key>
+      <PropertyRef Name="Num_gr" />
+    </Key>
+    <Property Name="Facultet" Type="varchar" MaxLength="40" />
+    <Property Name="kurs" Type="int" />
+    <Property Name="Num_gr" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="postupaushii">
+    <Key>
+      <PropertyRef Name="ball" />
+    </Key>
+    <Property Name="Facultet" Type="varchar" MaxLength="40" />
+    <Property Name="familiya_postup" Type="varchar" MaxLength="100" />
+    <Property Name="imya_postup" Type="varchar" MaxLength="100" />
+    <Property Name="ball" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="stipendiya">
+    <Key>
+      <PropertyRef Name="imya" />
+    </Key>
+    <Property Name="Num_gr" Type="int" />
+    <Property Name="familiya" Type="varchar" MaxLength="100" />
+    <Property Name="imya" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="viplata" Type="int" />
+  </EntityType>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="familiya" />
+    </Key>
+    <Property Name="familiya" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="imya" Type="varchar" MaxLength="100" />
+    <Property Name="Num_gr" Type="int" />
+    <Property Name="god_postup" Type="date" />
+    <Property Name="paroli" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="univer">
+    <Key>
+      <PropertyRef Name="Facultet" />
+    </Key>
+    <Property Name="Facultet" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Num_gr" Type="int" Nullable="false" />
+    <Property Name="Num_gr2" Type="int" />
+  </EntityType>
+  <EntityType Name="vipusk">
+    <Key>
+      <PropertyRef Name="familiya_vipusk" />
+    </Key>
+    <Property Name="familiya_vipusk" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="imya_vipusk" Type="varchar" MaxLength="100" />
+    <Property Name="Num_gr" Type="int" />
+  </EntityType>
+  <Association Name="FK__grup__Facultet__403A8C7D">
+    <End Role="univer" Type="Self.univer" Multiplicity="0..1" />
+    <End Role="grup" Type="Self.grup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="univer">
+        <PropertyRef Name="Facultet" />
+      </Principal>
+      <Dependent Role="grup">
+        <PropertyRef Name="Facultet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__postupaus__Facul__412EB0B6">
+    <End Role="univer" Type="Self.univer" Multiplicity="0..1" />
+    <End Role="postupaushii" Type="Self.postupaushii" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="univer">
+        <PropertyRef Name="Facultet" />
+      </Principal>
+      <Dependent Role="postupaushii">
+        <PropertyRef Name="Facultet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__stipendiy__Num_g__4222D4EF">
+    <End Role="grup" Type="Self.grup" Multiplicity="0..1" />
+    <End Role="stipendiya" Type="Self.stipendiya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="grup">
+        <PropertyRef Name="Num_gr" />
+      </Principal>
+      <Dependent Role="stipendiya">
+        <PropertyRef Name="Num_gr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__student__Num_gr__4316F928">
+    <End Role="grup" Type="Self.grup" Multiplicity="0..1" />
+    <End Role="student" Type="Self.student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="grup">
+        <PropertyRef Name="Num_gr" />
+      </Principal>
+      <Dependent Role="student">
+        <PropertyRef Name="Num_gr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vipusk__Num_gr__440B1D61">
+    <End Role="grup" Type="Self.grup" Multiplicity="0..1" />
+    <End Role="vipusk" Type="Self.vipusk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="grup">
+        <PropertyRef Name="Num_gr" />
+      </Principal>
+      <Dependent Role="vipusk">
+        <PropertyRef Name="Num_gr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище new_bdModelContainer">
+    <EntitySet Name="grup" EntityType="Self.grup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="postupaushii" EntityType="Self.postupaushii" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stipendiya" EntityType="Self.stipendiya" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="student" EntityType="Self.student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="univer" EntityType="Self.univer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vipusk" EntityType="Self.vipusk" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__grup__Facultet__403A8C7D" Association="Self.FK__grup__Facultet__403A8C7D">
+      <End Role="univer" EntitySet="univer" />
+      <End Role="grup" EntitySet="grup" />
+    </AssociationSet>
+    <AssociationSet Name="FK__postupaus__Facul__412EB0B6" Association="Self.FK__postupaus__Facul__412EB0B6">
+      <End Role="univer" EntitySet="univer" />
+      <End Role="postupaushii" EntitySet="postupaushii" />
+    </AssociationSet>
+    <AssociationSet Name="FK__stipendiy__Num_g__4222D4EF" Association="Self.FK__stipendiy__Num_g__4222D4EF">
+      <End Role="grup" EntitySet="grup" />
+      <End Role="stipendiya" EntitySet="stipendiya" />
+    </AssociationSet>
+    <AssociationSet Name="FK__student__Num_gr__4316F928" Association="Self.FK__student__Num_gr__4316F928">
+      <End Role="grup" EntitySet="grup" />
+      <End Role="student" EntitySet="student" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vipusk__Num_gr__440B1D61" Association="Self.FK__vipusk__Num_gr__440B1D61">
+      <End Role="grup" EntitySet="grup" />
+      <End Role="vipusk" EntitySet="vipusk" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

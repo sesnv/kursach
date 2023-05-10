@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище new_bdModelContainer" CdmEntityContainer="new_bdEntities1">
+    <EntitySetMapping Name="grup">
+      <EntityTypeMapping TypeName="new_bdModel.grup">
+        <MappingFragment StoreEntitySet="grup">
+          <ScalarProperty Name="Facultet" ColumnName="Facultet" />
+          <ScalarProperty Name="kurs" ColumnName="kurs" />
+          <ScalarProperty Name="Num_gr" ColumnName="Num_gr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="postupaushii">
+      <EntityTypeMapping TypeName="new_bdModel.postupaushii">
+        <MappingFragment StoreEntitySet="postupaushii">
+          <ScalarProperty Name="Facultet" ColumnName="Facultet" />
+          <ScalarProperty Name="familiya_postup" ColumnName="familiya_postup" />
+          <ScalarProperty Name="imya_postup" ColumnName="imya_postup" />
+          <ScalarProperty Name="ball" ColumnName="ball" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stipendiya">
+      <EntityTypeMapping TypeName="new_bdModel.stipendiya">
+        <MappingFragment StoreEntitySet="stipendiya">
+          <ScalarProperty Name="Num_gr" ColumnName="Num_gr" />
+          <ScalarProperty Name="familiya" ColumnName="familiya" />
+          <ScalarProperty Name="imya" ColumnName="imya" />
+          <ScalarProperty Name="viplata" ColumnName="viplata" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="student">
+      <EntityTypeMapping TypeName="new_bdModel.student">
+        <MappingFragment StoreEntitySet="student">
+          <ScalarProperty Name="familiya" ColumnName="familiya" />
+          <ScalarProperty Name="imya" ColumnName="imya" />
+          <ScalarProperty Name="Num_gr" ColumnName="Num_gr" />
+          <ScalarProperty Name="god_postup" ColumnName="god_postup" />
+          <ScalarProperty Name="paroli" ColumnName="paroli" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="univer">
+      <EntityTypeMapping TypeName="new_bdModel.univer">
+        <MappingFragment StoreEntitySet="univer">
+          <ScalarProperty Name="Facultet" ColumnName="Facultet" />
+          <ScalarProperty Name="Num_gr" ColumnName="Num_gr" />
+          <ScalarProperty Name="Num_gr2" ColumnName="Num_gr2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vipusk">
+      <EntityTypeMapping TypeName="new_bdModel.vipusk">
+        <MappingFragment StoreEntitySet="vipusk">
+          <ScalarProperty Name="familiya_vipusk" ColumnName="familiya_vipusk" />
+          <ScalarProperty Name="imya_vipusk" ColumnName="imya_vipusk" />
+          <ScalarProperty Name="Num_gr" ColumnName="Num_gr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
